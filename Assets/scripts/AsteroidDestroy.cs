@@ -7,10 +7,7 @@ public class AsteroidDestroy : MonoBehaviour
 		void OnTriggerEnter2D (Collider2D collider)
 		{
 				colliderName = collider.gameObject.name;
-				Destroy (this.gameObject);
-
-		
-				if (collider.gameObject.tag == "Player")
-						Camera.main.GetComponent<HealthScript> ().Die ();
+				if (collider.gameObject.tag != "Asteroid")
+						Destroy (this.gameObject);
 		}
 }
