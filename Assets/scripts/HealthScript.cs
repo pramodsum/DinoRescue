@@ -17,6 +17,10 @@ public class HealthScript : MonoBehaviour
 		void FixedUpdate ()
 		{
 				lives_text.guiText.text = lives.ToString ();
+
+				if (lives <= 0) {
+						Application.LoadLevel (1); 
+				}
 		}
 
 		public void Die ()
