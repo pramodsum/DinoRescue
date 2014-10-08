@@ -35,6 +35,6 @@ public class FollowCam : MonoBehaviour
 				// Set the camera to the destination
 				transform.position = destination;	
 				// Set the orthographicSize of the Camera to keep Ground in view
-				this.camera.orthographicSize = 10;
+				this.camera.orthographicSize = 7;
 		}
 }
