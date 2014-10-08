@@ -3,11 +3,10 @@ using System.Collections;
 
 public class AsteroidDestroy : MonoBehaviour
 {
-		void OnCollisionEnter (Collision collision)
+		public string colliderName = "";
+		void OnTriggerEnter2D (Collider2D collider)
 		{
-//				if (collision.gameObject.name == "Asteroid") {
-				Destroy (collision.gameObject); // destroys the thing this script bumped into
-//				}
-		
+				colliderName = collider.gameObject.name;
+				Destroy (this.gameObject);
 		}
 }
