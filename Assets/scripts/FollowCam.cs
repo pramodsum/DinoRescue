@@ -25,8 +25,8 @@ public class FollowCam : MonoBehaviour
 		void FixedUpdate ()
 		{
 				Vector3 destination = poi.transform.position;
-				//Limit the X & Y to minimum values
-				destination.x = Mathf.Max (minXY.x, destination.x);
+				//Limit the Y to minimum values
+				destination.x = 0.0f;
 				destination.y = Mathf.Max (minXY.y, destination.y);
 				//Interpolate from the current Camera position toward destination
 				destination = Vector3.Lerp (transform.position, destination, easing);
