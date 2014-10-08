@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
 		// The force which is added when the player jumps
 		// This can be changed in the Inspector window
-		public Vector2 jumpForce = new Vector2 (0, 1000);
+		public Vector2 jumpForce = new Vector2 (0, 100);
 
 		void Start ()
 		{
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
 				//Move the Player
 				transform.Translate (Vector3.right * amountToMove);
 
-				if (Input.GetKey (KeyCode.Space) && isGrounded) {
+				if (Input.GetKeyDown (KeyCode.Space) && isGrounded) {
 						spriteRenderer.sprite = sprites [1];
 						rigidbody2D.velocity = Vector2.zero;
 						rigidbody2D.AddForce (jumpForce);
