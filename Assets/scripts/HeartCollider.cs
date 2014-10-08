@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AsteroidDestroy : MonoBehaviour
+public class HeartCollider : MonoBehaviour
 {
-		public string colliderName = "";
 		void OnTriggerEnter2D (Collider2D collider)
 		{
-				colliderName = collider.gameObject.name;
 				Destroy (this.gameObject);
 
-		
 				if (collider.gameObject.tag == "Player")
-						Camera.main.GetComponent<HealthScript> ().Die ();
+						Camera.main.GetComponent<HealthScript> ().Heal ();
 		}
 }

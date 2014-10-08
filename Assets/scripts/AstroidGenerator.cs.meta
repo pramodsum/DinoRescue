@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: e21c922eb0f4c46cc941fcbe3866cbbd
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - anchor: {fileID: 100000, guid: f819784b4c0d04640b6059ebdebc47f0, type: 2}
+  - player: {fileID: 100000, guid: c6fedb57f7e4d4a1687d2661a1d5ab33, type: 2}
+  - asteroidPrefab: {fileID: 100000, guid: 2ba3e70660c934cc8acb15c51202d886, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

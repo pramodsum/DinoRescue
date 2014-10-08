@@ -7,6 +7,8 @@ public class AstroidGenerator : MonoBehaviour
 		public GameObject anchor;
 		public GameObject player;
 		public GameObject asteroidPrefab;
+		public GameObject heartPrefab;
+		public GameObject fruitPrefab;
 		public Vector3 asteroidPosMin;
 		public Vector3 asteroidPosMax;
 		public float asteroidScaleMin = 1;
@@ -27,7 +29,7 @@ public class AstroidGenerator : MonoBehaviour
 						Vector3 cPos = Vector3.zero;
 
 						cPos.x = Random.Range (asteroidPosMin.x, asteroidPosMax.x);
-						cPos.y = player.transform.position.y + 25f;
+						cPos.y = player.transform.position.y + 40f;
 
 						float scaleU = Random.value;
 						float scaleVal = Mathf.Lerp (asteroidScaleMin, asteroidScaleMax, scaleU);
@@ -41,6 +43,17 @@ public class AstroidGenerator : MonoBehaviour
 						asteroidInstances.Add (asteroid);
 
 						timeSince = 0;
+			
+						if (Camera .main.GetComponent<HealthScript> ().LivesLeft () == 1) {
+								GameObject heart = Instantiate (heartPrefab) as GameObject;
+				
+								cPos.x = Random.Range (asteroidPosMin.x, asteroidPosMax.x);
+								cPos.y = Mathf.Lerp (asteroidPosMin.y, cPos.y, scaleU);
+								cPos.z = 100 - 90 * scaleU;
+				
+								heart.transform.position = cPos;
+								heart.transform.parent = anchor.transform;
+						}
 				}
 		}
 }
