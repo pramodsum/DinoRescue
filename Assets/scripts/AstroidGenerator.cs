@@ -5,6 +5,7 @@ public class AstroidGenerator : MonoBehaviour
 {
 		// fields set in the Unity Inspector pane
 		public GameObject anchor;
+		public GameObject player;
 		public GameObject asteroidPrefab;
 		public Vector3 asteroidPosMin;
 		public Vector3 asteroidPosMax;
@@ -26,7 +27,7 @@ public class AstroidGenerator : MonoBehaviour
 						Vector3 cPos = Vector3.zero;
 
 						cPos.x = Random.Range (asteroidPosMin.x, asteroidPosMax.x);
-						cPos.y = anchor.transform.position.y;
+						cPos.y = player.transform.position.y + 25f;
 
 						float scaleU = Random.value;
 						float scaleVal = Mathf.Lerp (asteroidScaleMin, asteroidScaleMax, scaleU);
@@ -40,20 +41,6 @@ public class AstroidGenerator : MonoBehaviour
 						asteroidInstances.Add (asteroid);
 
 						timeSince = 0;
-				}
-		}
-	
-		// Update is called once per frame
-		void Update ()
-		{
-				foreach (GameObject asteroid in asteroidInstances) {
-						float scaleVal = asteroid.transform.localScale.x;
-						Vector3 cPos = asteroid.transform.position;
-						cPos.x -= scaleVal * Time.deltaTime * asteroidSpeedMult;
-						if (cPos.x <= asteroidPosMin.x) {
-								cPos.x = asteroidPosMax.x;
-						}
-						asteroid.transform.position = cPos;
 				}
 		}
 }
