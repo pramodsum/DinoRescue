@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
 		{
 				isGrounded = true;
 		}
+
 		void OnCollisionExit (Collision coll)
 		{
 				if (isGrounded) {

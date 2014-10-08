@@ -4,7 +4,7 @@ using System.Collections;
 public class AstroidGenerator : MonoBehaviour
 {
 		// fields set in the Unity Inspector pane
-		public int numAsteroids = 40;
+		public GameObject anchor;
 		public GameObject asteroidPrefab;
 		public Vector3 asteroidPosMin;
 		public Vector3 asteroidPosMax;
@@ -15,26 +15,31 @@ public class AstroidGenerator : MonoBehaviour
 		public bool ______________________________;
 	
 		// fields set dynamically
-		public GameObject[] asteroidInstances;
+		public ArrayList asteroidInstances = new ArrayList ();
+		public double timeSince = 0;
 	
-		void Awake ()
+		void FixedUpdate ()
 		{
-				asteroidInstances = new GameObject[numAsteroids];
-				GameObject anchor = GameObject.Find ("AstroidAnchor");
-				GameObject asteroid;
-				for (int i = 0; i < numAsteroids; i++) {
-						asteroid = Instantiate (asteroidPrefab) as GameObject;
+				timeSince += Time.deltaTime;
+				if (timeSince >= 3) {
+						GameObject asteroid = Instantiate (asteroidPrefab) as GameObject;
 						Vector3 cPos = Vector3.zero;
+
 						cPos.x = Random.Range (asteroidPosMin.x, asteroidPosMax.x);
-						cPos.y = Random.Range (asteroidPosMin.y, asteroidPosMax.y);
+						cPos.y = anchor.transform.position.y;
+
 						float scaleU = Random.value;
 						float scaleVal = Mathf.Lerp (asteroidScaleMin, asteroidScaleMax, scaleU);
+
 						cPos.y = Mathf.Lerp (asteroidPosMin.y, cPos.y, scaleU);
 						cPos.z = 100 - 90 * scaleU;
+
 						asteroid.transform.position = cPos;
 						asteroid.transform.localScale = Vector3.one * scaleVal;
 						asteroid.transform.parent = anchor.transform;
-						asteroidInstances [i] = asteroid;
+						asteroidInstances.Add (asteroid);
+
+						timeSince = 0;
 				}
 		}
 	
