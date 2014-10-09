@@ -28,11 +28,11 @@ public class HealthScript : MonoBehaviour
 				--lives;
 				lives_text.guiText.text = lives.ToString ();
 
-				Debug.Log ("Pre Score Snapshot: " + Camera.main.GetComponent<ScoreScript> ().score);
+				Debug.Log ("Pre Score Snapshot: " + Camera.main.GetComponent<ScoreScript> ().getScore ());
 
 				Camera.main.GetComponent<ScoreScript> ().Hit ();
 		
-				Debug.Log ("Post Score Snapshot: " + Camera.main.GetComponent<ScoreScript> ().score);
+				Debug.Log ("Post Score Snapshot: " + Camera.main.GetComponent<ScoreScript> ().getScore ());
 		}
 
 		public int LivesLeft ()
